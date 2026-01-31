@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CHE4QXVNLE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CHE4QXVNLE');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hockey Quiz</title>
@@ -111,6 +120,12 @@ document.addEventListener("DOMContentLoaded", function () {
     updateProgress();
 
     if (index >= quiz.length) {
+      gtag('event', 'quiz_completed', {
+        event_category: 'quiz',
+        event_label: 'hockey_quiz',
+        value: score
+      });
+      
       qEl.textContent = "Quiz klart!";
       progressBar.style.width = "100%";
       fEl.textContent = `Ditt resultat: ${score} av ${quiz.length} rätt.`;
@@ -186,6 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
 
 
 
